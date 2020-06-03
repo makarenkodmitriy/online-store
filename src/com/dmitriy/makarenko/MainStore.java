@@ -1,7 +1,7 @@
 package com.dmitriy.makarenko;
 
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.*;
 
 public class MainStore {
     public static void main(String[] args) throws IOException {
@@ -84,19 +84,7 @@ public class MainStore {
                 System.out.println(e.getMessage());
             }
         }
-        String id = "";
-        while (id.isEmpty()) {
-            try {
-                Scanner n = new Scanner(System.in);
-                System.out.print("Введите артикул товара: ");
-                id = n.nextLine();
-                if (id.isEmpty()) {
-                    throw new IOException("Артикул не может быть пустым");
-                }
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
-            }
-        }
+        String id = UUID.randomUUID().toString();
         return new Product(name, price, id, number);
     }
 }
