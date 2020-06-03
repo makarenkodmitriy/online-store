@@ -1,9 +1,10 @@
 package com.dmitriy.makarenko;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class MainStore {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Catalog catalog = new Catalog();
         System.out.println("Добро пожаловать в наш онлайн-магазин!");
         int num = 0;
@@ -32,6 +33,7 @@ public class MainStore {
                         }
                     }
                     break;
+
                 case 2:
                     System.out.println("Список товаров: \n" + catalog.getCatalog().toString());
                     break;
@@ -44,16 +46,57 @@ public class MainStore {
 
     }
 
-    public static Product addProduct() {
+    public static Product addProduct() throws IOException {
         Scanner in = new Scanner(System.in);
-        System.out.print("Введите название товара: ");
-        String name = in.nextLine();
-        System.out.print("Введите цену товара: ");
-        float price = in.nextFloat();
-        System.out.print("Введите количество товара: ");
-        int number = in.nextInt();
-        System.out.print("Введите артикул товара: ");
-        int id = in.nextInt();
+        String name = "";
+        while (name.isEmpty()) {
+            try {
+                System.out.print("Введите название товара: ");
+                name = in.nextLine();
+                if (name.isEmpty()) {
+                    throw new IOException("Название товара не должно быть пустым!");
+                }
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        float price = 0;
+        while (price <= 0) {
+            try {
+                System.out.print("Введите цену товара: ");
+                price = in.nextFloat();
+                if (price <= 0) {
+                    throw new IOException("Цена не может быть отрицательной и равной нулю!");
+                }
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        int number = 0;
+        while (number <= 0) {
+            try {
+                System.out.print("Введите количество товара: ");
+                number = in.nextInt();
+                if (number <= 0) {
+                    throw new IOException("Количество товара не может быть отрицательным и равным нулю!");
+                }
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        String id = "";
+        while (id.isEmpty()) {
+            try {
+                Scanner n = new Scanner(System.in);
+                System.out.print("Введите артикул товара: ");
+                id = n.nextLine();
+                if (id.isEmpty()) {
+                    throw new IOException("Артикул не может быть пустым");
+                }
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
         return new Product(name, price, id, number);
     }
 }
