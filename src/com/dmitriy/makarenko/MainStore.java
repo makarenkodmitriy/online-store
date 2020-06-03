@@ -5,8 +5,22 @@ import java.util.Scanner;
 public class MainStore {
     public static void main(String[] args) {
         Catalog catalog = new Catalog();
-        catalog.addProductToCatalog(addProduct());
-        System.out.println("Список товаров: \n" + catalog.getCatalog().toString());
+        System.out.println("Добро пожаловать в наш онлайн-магазин!");
+        System.out.println("Выберите опцию: 1 - Добавить товар, 2 - Просмотреть товар");
+        System.out.print("Введите номер опции: ");
+        Scanner in = new Scanner(System.in);
+        int num = in.nextInt();
+        switch (num){
+            case 1:
+                catalog.addProductToCatalog(addProduct());
+                break;
+            case 2:
+                System.out.println("Список товаров: \n" + catalog.getCatalog().toString());
+                break;
+            default:
+                System.out.println("Вы не выбрали опцию!");
+        }
+
     }
 
     public static Product addProduct() {
