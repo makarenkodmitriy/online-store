@@ -1,4 +1,4 @@
-package MyOnlineStore;
+package com.dmitriy.makarenko;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,17 +1,15 @@
-package MyOnlineStore;
+package com.dmitriy.makarenko;
 
-import java.util.*;
+import java.util.Scanner;
 
-public class Manager {
-    private Product product;
-    private String name;
-
-    Manager(Product product, String name) {
-        this.product = product;
-        this.name = name;
+public class MainStore {
+    public static void main(String[] args) {
+        Catalog catalog = new Catalog();
+        catalog.addProductToCatalog(addProduct());
+        System.out.println("Список товаров: \n" + catalog.getCatalog().toString());
     }
 
-    public static Product addProduct() {
+    private static Product addProduct() {
         Scanner in = new Scanner(System.in);
         System.out.print("Введите название товара: ");
         String name = in.nextLine();

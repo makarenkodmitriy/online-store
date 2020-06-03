@@ -1,4 +1,4 @@
-package MyOnlineStore;
+package com.dmitriy.makarenko;
 
 public class Product {
     private String name;
@@ -31,22 +31,6 @@ public class Product {
 
     public int getNumber() {
         return number;
-    }
-
-    public void setPrice() {
-        if (price >= 0) {
-            this.price = price;
-            System.out.println("Цена успешно изменена!");
-        }
-        System.out.println("Цена не может быть отрицательной!");
-    }
-
-    public void setNumber() {
-        if (number >= 0) {
-            this.number = number;
-            System.out.println("Количество товара успешно изменено!");
-        }
-        System.out.println("Количество не может быть отрицательным!");
     }
 
 }
