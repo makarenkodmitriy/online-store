@@ -13,7 +13,18 @@ public class MainStore {
         switch (num){
             case 1:
                 catalog.addProductToCatalog(addProduct());
-                break;
+                System.out.print("Для просмотра введенного товара нажмите 2, а для выхода - 3: ");
+                Scanner n = new Scanner(System.in);
+                int n1 = n.nextInt();
+                if (n1 == 2){
+                    System.out.println("Список товаров: \n" + catalog.getCatalog().toString());
+                    break;
+                }else if (n1 == 3){
+                    break;
+                }else if (n1 != 2 && n1 != 3) {
+                    System.out.println("Вы не сделали выбор!");
+                    break;
+                }
             case 2:
                 System.out.println("Список товаров: \n" + catalog.getCatalog().toString());
                 break;
