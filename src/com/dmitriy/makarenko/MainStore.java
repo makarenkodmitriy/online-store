@@ -9,7 +9,7 @@ public class MainStore {
         System.out.println("Список товаров: \n" + catalog.getCatalog().toString());
     }
 
-    private static Product addProduct() {
+    public static Product addProduct() {
         Scanner in = new Scanner(System.in);
         System.out.print("Введите название товара: ");
         String name = in.nextLine();
