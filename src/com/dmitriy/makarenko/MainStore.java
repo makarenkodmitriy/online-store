@@ -84,7 +84,8 @@ public class MainStore {
                 System.out.println(e.getMessage());
             }
         }
-        String id = UUID.randomUUID().toString();
+        int id = (int) (Math.random() * 10000000);
         return new Product(name, price, id, number);
     }
 }
+
