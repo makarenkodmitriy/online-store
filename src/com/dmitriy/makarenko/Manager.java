@@ -3,10 +3,10 @@ package com.dmitriy.makarenko;
 import java.util.*;
 
 public class Manager {
-    private Product product;
+    private Catalog catalog;
 
-    Manager(Product product) {
-        this.product = product;
+    Manager(Catalog catalog) {
+        this.catalog = catalog;
     }
 
 }

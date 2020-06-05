@@ -1,9 +1,11 @@
 package com.dmitriy.makarenko;
 
-public class Purchaser {
-    private Product product;
+import java.util.ArrayList;
 
-    Purchaser(Product product){
-        this.product = product;
+public class Purchaser {
+    private Catalog catalog;
+
+    Purchaser(Catalog catalog){
+        this.catalog = catalog;
     }
 }

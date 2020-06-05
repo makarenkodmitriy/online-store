@@ -7,22 +7,22 @@ public class MainStore {
     public static void main(String[] args) throws IOException {
         Catalog catalog = new Catalog();
         System.out.println("Добро пожаловать в наш онлайн-магазин!");
-        int num = 0;
-        while (num != 3) {
+        int level0 = 0;
+        while (level0 != 3) {
             System.out.println("Выберите опцию: 1 - Добавить товар, 2 - Просмотреть товар, 3 - Выйти из магазина");
             System.out.print("Введите номер опции: ");
             Scanner in = new Scanner(System.in);
-            num = in.nextInt();
-            switch (num) {
+            level0 = in.nextInt();
+            switch (level0) {
                 case 1:
                     catalog.addProductToCatalog(addProduct());
-                    int n1 = 0;
-                    while (n1 != 2) {
+                    int level1 = 0;
+                    while (level1 != 2) {
                         System.out.println("Выберите опцию: 1 - Добавить еще товар, 2 - Выйти в предыдущее меню");
                         System.out.print("Введите номер опции: ");
                         Scanner n = new Scanner(System.in);
-                        n1 = n.nextInt();
-                        switch (n1) {
+                        level1 = n.nextInt();
+                        switch (level1) {
                             case 1:
                                 catalog.addProductToCatalog(addProduct());
                                 break;
