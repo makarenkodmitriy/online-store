@@ -1,11 +1,14 @@
 package com.dmitriy.makarenko;
 
-import java.io.IOException;
+import db.ProductRepository;
+
+import java.io.*;
 import java.util.*;
 
 public class MainStore {
     public static void main(String[] args) throws IOException {
-        Catalog catalog = new Catalog();
+        // Catalog catalog = new Catalog();
+        ProductRepository productRepository = new ProductRepository();
         System.out.println("Добро пожаловать в наш онлайн-магазин!");
         int level0 = 0;
         while (level0 != 3) {
@@ -15,7 +18,8 @@ public class MainStore {
             level0 = in.nextInt();
             switch (level0) {
                 case 1:
-                    catalog.addProductToCatalog(addProduct());
+                    // catalog.addProductToCatalog(createProduct());
+                    productRepository.saveProductToFile(createProduct());
                     int level1 = 0;
                     while (level1 != 2) {
                         System.out.println("Выберите опцию: 1 - Добавить еще товар, 2 - Выйти в предыдущее меню");
@@ -24,7 +28,8 @@ public class MainStore {
                         level1 = n.nextInt();
                         switch (level1) {
                             case 1:
-                                catalog.addProductToCatalog(addProduct());
+                                // catalog.addProductToCatalog(createProduct());
+                                productRepository.saveProductToFile(createProduct());
                                 break;
                             case 2:
                                 break;
@@ -35,7 +40,8 @@ public class MainStore {
                     break;
 
                 case 2:
-                    System.out.println("Список товаров: \n" + catalog.getCatalog().toString());
+                    System.out.println("Список товаров: ");
+                    System.out.println(productRepository.getProductFromFile().toString());
                     break;
                 case 3:
                     break;
@@ -46,7 +52,7 @@ public class MainStore {
 
     }
 
-    public static Product addProduct() throws IOException {
+    public static Product createProduct() throws IOException {
         Scanner in = new Scanner(System.in);
         String name = "";
         while (name.isEmpty()) {
@@ -72,12 +78,12 @@ public class MainStore {
                 System.out.println(e.getMessage());
             }
         }
-        int number = 0;
-        while (number <= 0) {
+        int count = 0;
+        while (count <= 0) {
             try {
                 System.out.print("Введите количество товара: ");
-                number = in.nextInt();
-                if (number <= 0) {
+                count = in.nextInt();
+                if (count <= 0) {
                     throw new IOException("Количество товара не может быть отрицательным и равным нулю!");
                 }
             } catch (IOException e) {
@@ -85,7 +91,7 @@ public class MainStore {
             }
         }
         int id = (int) (Math.random() * 10000000);
-        return new Product(name, price, id, number);
+        return new Product(name, price, count, id);
     }
 }
 

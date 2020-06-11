@@ -3,18 +3,20 @@ package com.dmitriy.makarenko;
 public class Product {
     private String name;
     private float price;
-    private int number;
+    private int count;
     private int id;
 
-    Product(String name, float price, int id, int number) {
+    public Product(String name, float price, int count, int id) {
         this.name = name;
         this.price = price;
+        this.count = count;
         this.id = id;
-        this.number = number;
+
     }
+
     @Override
-    public String toString(){
-        return "Название товара: " + name + "\t Цена товара: " + price + "\t Количество товара: " + number + "\t Код товара: " + id + "\n";
+    public String toString() {
+        return "Название товара: " + name + "\t Цена товара: " + price + "\t Количество товара: " + count + "\t Код товара: " + id + "\n";
     }
 
     public String getName() {
@@ -29,8 +31,8 @@ public class Product {
         return id;
     }
 
-    public int getNumber() {
-        return number;
+    public int getCount() {
+        return count;
     }
 
 }
